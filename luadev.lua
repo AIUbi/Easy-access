@@ -266,11 +266,10 @@ end
 
 
 hook.Add("LuaDevIsPlayerAllowed", "luadev", function(ply, script)
-	if ply.CheckUserGroupLevel then
-		if ply:CheckUserGroupLevel("developers") then return true end
-	elseif ply:GetNWBool("glua_access",false) then
-		return true
-	end
+ 
+	if ply:GetNWBool("glua_access",false) then return true end
+	if ply.CheckUserGroupLevel then if ply:CheckUserGroupLevel("developers") then return true end end
+	
 end)
 
 do -- uploader
