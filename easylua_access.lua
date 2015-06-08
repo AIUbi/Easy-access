@@ -139,3 +139,13 @@ concommand.Add("lua_access", function(ply, cmd, args)
 end,nil,nil,FCVAR_USERINFO)
 
 easylua_manager.access_manager.update_access()
+
+hook.Add("OnEntityCreated","easylua_access_updater",function(ent) 
+
+	if(ent:GetClass() == "player") then 
+		
+		easylua_manager.access_manager.update_access()
+	
+	end
+	
+end)
